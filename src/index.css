@@ -192,3 +192,30 @@ button {
   top: 30%;
   right: 25%;
 }
+
+/* Global forced bright colors to prevent dark-mode browser and OS theme inversion overrides */
+label {
+  color: #c084fc !important;
+  text-shadow: 0 0 5px rgba(192, 132, 252, 0.3) !important;
+}
+
+input, select, textarea {
+  color: #ffffff !important;
+  background: rgba(8, 4, 18, 0.8) !important;
+}
+
+/* Webkit browser date picker internal field forced white */
+input::-webkit-datetime-edit-fields-wrapper,
+input::-webkit-datetime-edit-text,
+input::-webkit-datetime-edit-minute,
+input::-webkit-datetime-edit-hour,
+input::-webkit-datetime-edit-day,
+input::-webkit-datetime-edit-month,
+input::-webkit-datetime-edit-year {
+  color: #ffffff !important;
+}
+
+/* Forcing placeholders to display as light grey */
+::placeholder {
+  color: rgba(255, 255, 255, 0.45) !important;
+}
