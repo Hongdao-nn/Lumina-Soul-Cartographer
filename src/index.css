@@ -1,0 +1,185 @@
+:root {
+  --font-display: 'Outfit', system-ui, sans-serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  
+  /* Color Palette - Vibrant Galaxy Theme */
+  --bg-deep: #080324;
+  --bg-nebula: #1f0b58;
+  
+  /* Cosmic Glassmorphism */
+  --bg-card: rgba(20, 10, 48, 0.45);
+  --bg-card-hover: rgba(30, 15, 68, 0.6);
+  --border-light: rgba(168, 85, 247, 0.35);
+  --border-glow: rgba(168, 85, 247, 0.55);
+  
+  --text-main: #d8d8fc;
+  --text-muted: #9ba8c9;
+  --text-bright: #ffffff;
+  
+  /* Galaxy Constellation Accent Colors */
+  --color-violet: #a855f7;
+  --color-purple: #c084fc;
+  --color-gold: #fbbf24;
+  --color-teal: #2dd4bf;
+  --color-rose: #f472b6;
+  
+  /* Galaxy Neon Shadows & Glows */
+  --shadow-cosmic: 0 10px 30px -10px rgba(0, 0, 0, 0.8), 0 0 15px rgba(168, 85, 247, 0.05);
+  --glow-violet: 0 0 20px rgba(168, 85, 247, 0.25);
+  --glow-gold: 0 0 20px rgba(251, 191, 36, 0.25);
+  
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: radial-gradient(circle at 50% 30%, var(--bg-nebula) 0%, var(--bg-deep) 100%);
+  background-attachment: fixed;
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(168, 85, 247, 0.15);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(168, 85, 247, 0.3);
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Glassmorphism Panel Utility */
+.glass-panel {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(168, 85, 247, 0.4);
+  border-radius: 16px;
+  box-shadow: 
+    0 8px 32px 0 rgba(13, 7, 43, 0.6),
+    0 0 15px rgba(168, 85, 247, 0.15),
+    inset 0 0 12px rgba(45, 212, 191, 0.05);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-panel:hover {
+  border-color: rgba(45, 212, 191, 0.6);
+  box-shadow: 
+    0 12px 40px 0 rgba(13, 7, 43, 0.8),
+    0 0 25px rgba(45, 212, 191, 0.3),
+    inset 0 0 16px rgba(168, 85, 247, 0.1);
+}
+
+/* Glowing text */
+.glow-text-violet {
+  text-shadow: 0 0 12px rgba(168, 85, 247, 0.5);
+  color: var(--text-bright);
+}
+.glow-text-gold {
+  text-shadow: 0 0 12px rgba(251, 191, 36, 0.5);
+  color: var(--color-gold);
+}
+
+/* Form Controls */
+input, select, textarea {
+  background: rgba(8, 4, 18, 0.7);
+  border: 1px solid var(--border-light);
+  color: var(--text-bright);
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  transition: all 0.25s ease;
+  outline: none;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--color-violet);
+  box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.2);
+  background: rgba(13, 8, 28, 0.8);
+}
+
+button {
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-weight: 500;
+  transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+  outline: none;
+}
+
+/* Star dust background pattern */
+.star-field {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: 
+    radial-gradient(1.2px 1.2px at 30px 40px, rgba(255,255,255,0.7), rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 80px 120px, rgba(255,255,255,0.4), rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 150px 220px, rgba(168, 85, 247, 0.5), rgba(0,0,0,0)),
+    radial-gradient(1.5px 1.5px at 240px 310px, rgba(251, 191, 36, 0.4), rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 320px 90px, rgba(255,255,255,0.6), rgba(0,0,0,0));
+  background-repeat: repeat;
+  background-size: 380px 380px;
+  opacity: 0.55;
+}
+
+.galaxy-nebula {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(140px);
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.55;
+  mix-blend-mode: screen;
+}
+.nebula-1 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.4) 0%, rgba(0,0,0,0) 70%);
+  top: -100px;
+  right: -100px;
+}
+.nebula-2 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(45, 212, 191, 0.35) 0%, rgba(0,0,0,0) 70%);
+  bottom: -150px;
+  left: -150px;
+}
+.nebula-3 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(244, 114, 182, 0.3) 0%, rgba(0,0,0,0) 70%);
+  top: 40%;
+  left: 20%;
+}
+.nebula-4 {
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.25) 0%, rgba(0,0,0,0) 70%);
+  top: 30%;
+  right: 25%;
+}
