@@ -172,7 +172,7 @@ export default function App() {
       return;
     }
     const users = JSON.parse(localStorage.getItem('lumina_users') || '{}');
-    const user = users[currentUser];
+    const user = users[currentUser.username];
     if (user) {
       if (!user.archive) user.archive = { placements: [], decrees: [], tarot: [] };
       user.archive[type].push({
@@ -180,7 +180,7 @@ export default function App() {
         id: `${Date.now()}-${Math.random()}`,
         timestamp: new Date().toLocaleString()
       });
-      users[currentUser] = user;
+      users[currentUser.username] = user;
       localStorage.setItem('lumina_users', JSON.stringify(users));
       setUserArchive(user.archive);
       alert('Reading saved successfully to your Soul Archive!');
@@ -190,10 +190,10 @@ export default function App() {
   const saveApiKey = (newKey) => {
     if (!currentUser) return;
     const users = JSON.parse(localStorage.getItem('lumina_users') || '{}');
-    const user = users[currentUser];
+    const user = users[currentUser.username];
     if (user) {
       user.apiKey = newKey;
-      users[currentUser] = user;
+      users[currentUser.username] = user;
       localStorage.setItem('lumina_users', JSON.stringify(users));
       setUserApiKey(newKey);
       alert('API Key updated successfully!');
@@ -631,6 +631,14 @@ export default function App() {
     setShowCityDropdown(false);
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      if (name && birthDate && citySearch.trim()) {
+        handleGenerate();
+      }
+    }
+  };
+
   const handleGenerate = (e) => {
     if (e) e.preventDefault();
     
@@ -994,7 +1002,7 @@ export default function App() {
                   Enter birth coordinates to calculate Sun, Moon, and Ascendant accurately.
                 </p>
 
-                <form onSubmit={handleGenerate} className="setup-form">
+                <div className="setup-form" onKeyDown={handleKeyDown}>
                   <div className="form-group">
                     <label>First Name / Archetype</label>
                     <input
@@ -1084,8 +1092,9 @@ export default function App() {
                   )}
 
                   <button 
-                    type="submit" 
+                    type="button" 
                     className="btn-primary" 
+                    onClick={() => handleGenerate()}
                     disabled={!name || !birthDate || !citySearch.trim()}
                   >
                     Cast Soul Map
@@ -1098,7 +1107,7 @@ export default function App() {
                   >
                     Direct Auto-Fill (Arthur)
                   </button>
-                </form>
+                </div>
               </div>
             ) : (
               <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', zIndex: 1, position: 'relative' }}>
