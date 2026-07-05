@@ -318,9 +318,26 @@
 .form-group label {
   font-size: 12px;
   font-weight: 500;
-  color: var(--text-muted);
+  color: #c084fc !important; /* Beautiful glowing violet */
+  text-shadow: 0 0 5px rgba(192, 132, 252, 0.3) !important;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+}
+
+.form-group input, .form-group select {
+  color: #ffffff !important;
+  background: rgba(8, 4, 18, 0.8) !important;
+  border: 1px solid var(--border-light) !important;
+}
+
+/* Chrome Webkit Date Picker text forced white */
+.form-group input[type="date"]::-webkit-datetime-edit,
+.form-group input[type="date"]::-webkit-datetime-edit-fields-wrapper,
+.form-group input[type="date"]::-webkit-datetime-edit-text,
+.form-group input[type="date"]::-webkit-datetime-edit-month-field,
+.form-group input[type="date"]::-webkit-datetime-edit-day-field,
+.form-group input[type="date"]::-webkit-datetime-edit-year-field {
+  color: #ffffff !important;
 }
 
 .btn-primary {
