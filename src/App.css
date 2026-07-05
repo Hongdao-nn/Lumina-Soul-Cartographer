@@ -326,8 +326,15 @@
 
 .form-group input, .form-group select {
   color: #ffffff !important;
-  background: rgba(8, 4, 18, 0.8) !important;
-  border: 1px solid var(--border-light) !important;
+  background: rgba(13, 8, 28, 0.8) !important;
+  border: 1.5px solid rgba(168, 85, 247, 0.6) !important;
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Force placeholder to be bright white with 0.6 opacity */
+.form-group input::placeholder {
+  color: rgba(255, 255, 255, 0.6) !important;
+  opacity: 1 !important;
 }
 
 /* Chrome Webkit Date Picker text forced white */
@@ -338,6 +345,13 @@
 .form-group input[type="date"]::-webkit-datetime-edit-day-field,
 .form-group input[type="date"]::-webkit-datetime-edit-year-field {
   color: #ffffff !important;
+}
+
+/* Focus states */
+.form-group input:focus, .form-group select:focus {
+  border-color: var(--color-teal) !important;
+  box-shadow: 0 0 8px rgba(45, 212, 191, 0.4) !important;
+  background: rgba(18, 10, 42, 0.9) !important;
 }
 
 .btn-primary {
