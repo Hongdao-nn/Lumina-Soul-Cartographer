@@ -368,12 +368,15 @@ export default function SphinxRiddle({
             </div>
           ) : (
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <label htmlFor="sphinx-riddle-input" className="sr-only">Your Riddle Reflection</label>
               {/* Command line prompt input */}
               <div className="terminal-input-row" style={{ display: 'flex', alignItems: 'center', background: 'rgba(5, 4, 10, 0.7)', border: '1px solid var(--border-light)', borderRadius: '8px', padding: '2px 14px' }}>
                 <span style={{ color: 'var(--color-gold)', fontFamily: 'var(--mono)', fontSize: '13px', marginRight: '8px', userSelect: 'none' }}>
                   REFLECT &gt;
                 </span>
                 <input
+                  id="sphinx-riddle-input"
+                  name="sphinxAnswer"
                   type="text"
                   value={answer}
                   onChange={(e) => setAnswer(e.target.value)}

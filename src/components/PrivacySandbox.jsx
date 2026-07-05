@@ -130,7 +130,10 @@ export default function PrivacySandbox({ onTextSanitized }) {
               <button onClick={() => loadSample('finance')} style={{ background: 'none', border: 'none', fontSize: '11px', color: 'var(--color-violet)' }}>Sample 3</button>
             </div>
           </div>
+          <label htmlFor="privacy-sandbox-input" className="sr-only">Type your sensitive thoughts here</label>
           <textarea
+            id="privacy-sandbox-input"
+            name="privacyInput"
             value={inputText}
             onChange={(e) => setInputText(e.target.value)}
             placeholder="Type your sensitive thoughts here..."

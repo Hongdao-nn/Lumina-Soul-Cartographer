@@ -996,41 +996,47 @@ export default function App() {
 
                 <form onSubmit={handleGenerate} className="setup-form">
                   <div className="form-group">
-                    <label>First Name / Archetype</label>
+                    <label htmlFor="setup-name">First Name / Archetype</label>
                     <input
+                      id="setup-name"
+                      name="name"
                       type="text"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       placeholder="Enter name"
                       required
+                      autoComplete="given-name"
                     />
                   </div>
 
                   <div className="form-group">
-                    <label>Date of Birth</label>
+                    <label htmlFor="setup-dob">Date of Birth</label>
                     <input
+                      id="setup-dob"
+                      name="birthDate"
                       type="date"
                       value={birthDate}
                       onChange={(e) => setBirthDate(e.target.value)}
                       required
+                      autoComplete="bday"
                     />
                   </div>
 
                   {/* Custom AM/PM Time Selector */}
                   <div className="form-group">
-                    <label>Birth Time</label>
+                    <label htmlFor="setup-birth-hour">Birth Time</label>
                     <div className="custom-time-picker">
-                      <select value={birthHour} onChange={(e) => setBirthHour(e.target.value)}>
+                      <select id="setup-birth-hour" name="birthHour" value={birthHour} onChange={(e) => setBirthHour(e.target.value)}>
                         {Array.from({ length: 12 }, (_, i) => i + 1).map(h => (
                           <option key={h} value={h.toString().padStart(2, '0')}>{h.toString().padStart(2, '0')} Hr</option>
                         ))}
                       </select>
-                      <select value={birthMinute} onChange={(e) => setBirthMinute(e.target.value)}>
+                      <select id="setup-birth-minute" name="birthMinute" aria-label="Birth Minute" value={birthMinute} onChange={(e) => setBirthMinute(e.target.value)}>
                         {Array.from({ length: 12 }, (_, i) => i * 5).map(m => (
                           <option key={m} value={m.toString().padStart(2, '0')}>{m.toString().padStart(2, '0')} Min</option>
                         ))}
                       </select>
-                      <select value={birthPeriod} onChange={(e) => setBirthPeriod(e.target.value)}>
+                      <select id="setup-birth-period" name="birthPeriod" aria-label="Birth Period" value={birthPeriod} onChange={(e) => setBirthPeriod(e.target.value)}>
                         <option value="AM">AM</option>
                         <option value="PM">PM</option>
                       </select>
@@ -1039,10 +1045,12 @@ export default function App() {
 
                   {/* City Autocomplete Search */}
                   <div className="form-group">
-                    <label>City of Birth</label>
+                    <label htmlFor="setup-city">City of Birth</label>
                     <div className="autocomplete-container">
                       <div style={{ position: 'relative' }}>
                         <input
+                          id="setup-city"
+                          name="citySearch"
                           type="text"
                           value={citySearch}
                           onChange={(e) => {
@@ -1053,6 +1061,7 @@ export default function App() {
                           onFocus={() => setShowCityDropdown(true)}
                           placeholder="Search birth city..."
                           required
+                          autoComplete="address-level2"
                         />
                         <Search size={16} style={{ position: 'absolute', right: '16px', top: '14px', color: 'var(--text-muted)' }} />
                       </div>
@@ -1213,23 +1222,29 @@ export default function App() {
             {authMode === 'login' && (
               <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                  <label style={{ fontSize: '11px', textTransform: 'uppercase', color: 'var(--text-muted)', fontWeight: 'bold' }}>Username / Soul ID</label>
+                  <label htmlFor="auth-login-username" style={{ fontSize: '11px', textTransform: 'uppercase', color: 'var(--text-muted)', fontWeight: 'bold' }}>Username / Soul ID</label>
                   <input 
+                    id="auth-login-username"
+                    name="username"
                     type="text" 
                     value={authUsername} 
                     onChange={e => setAuthUsername(e.target.value)} 
                     placeholder="Enter Username" 
                     required 
+                    autoComplete="username"
                   />
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                  <label style={{ fontSize: '11px', textTransform: 'uppercase', color: 'var(--text-muted)', fontWeight: 'bold' }}>Password</label>
+                  <label htmlFor="auth-login-password" style={{ fontSize: '11px', textTransform: 'uppercase', color: 'var(--text-muted)', fontWeight: 'bold' }}>Password</label>
                   <input 
+                    id="auth-login-password"
+                    name="password"
                     type="password" 
                     value={authPassword} 
                     onChange={e => setAuthPassword(e.target.value)} 
                     placeholder="Enter Password" 
                     required 
+                    autoComplete="current-password"
                   />
                 </div>
                 <button type="submit" className="btn-primary" style={{ marginTop: '8px' }}>
@@ -1242,23 +1257,29 @@ export default function App() {
             {authMode === 'register' && (
               <form onSubmit={handleRegister} style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                  <label style={{ fontSize: '11px', textTransform: 'uppercase', color: 'var(--text-muted)', fontWeight: 'bold' }}>Create Username</label>
+                  <label htmlFor="auth-reg-username" style={{ fontSize: '11px', textTransform: 'uppercase', color: 'var(--text-muted)', fontWeight: 'bold' }}>Create Username</label>
                   <input 
+                    id="auth-reg-username"
+                    name="username"
                     type="text" 
                     value={authUsername} 
                     onChange={e => setAuthUsername(e.target.value)} 
                     placeholder="Choose Username" 
                     required 
+                    autoComplete="new-username"
                   />
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                  <label style={{ fontSize: '11px', textTransform: 'uppercase', color: 'var(--text-muted)', fontWeight: 'bold' }}>Password</label>
+                  <label htmlFor="auth-reg-password" style={{ fontSize: '11px', textTransform: 'uppercase', color: 'var(--text-muted)', fontWeight: 'bold' }}>Password</label>
                   <input 
+                    id="auth-reg-password"
+                    name="password"
                     type="password" 
                     value={authPassword} 
                     onChange={e => setAuthPassword(e.target.value)} 
                     placeholder="Choose Password" 
                     required 
+                    autoComplete="new-password"
                   />
                 </div>
                 <button type="submit" className="btn-primary" style={{ marginTop: '8px' }}>
