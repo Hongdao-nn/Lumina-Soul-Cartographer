@@ -603,10 +603,8 @@ LUMINA - The Soul Cartographer
       {!conclaveActive ? (
         <form onSubmit={runConclave} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
           <div className="form-group">
-            <label htmlFor="conclave-query-input">Ask your life query</label>
+            <label>Ask your life query</label>
             <textarea
-              id="conclave-query-input"
-              name="conclaveQuery"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="e.g. Should I start my own business or keep my stable job?"

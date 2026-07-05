@@ -156,10 +156,7 @@ export default function HealerJournal({ birthData, sanitizedText, onAddScore }) 
 
       {/* Chat Input */}
       <form onSubmit={handleSend} className="chat-input-area">
-        <label htmlFor="healer-chat-input" className="sr-only">Talk to the Healer</label>
         <input
-          id="healer-chat-input"
-          name="healerMessage"
           type="text"
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
