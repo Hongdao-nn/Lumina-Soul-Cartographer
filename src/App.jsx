@@ -996,49 +996,51 @@ export default function App() {
           {/* Right Column: Setup Card OR Tabs Dashboard */}
           <div className="dashboard-column">
             {!isSetupComplete ? (
-              <div id="tour-setup-card" className="glass-panel setup-card">
-                <h2>Cast Your Soul Map</h2>
-                <p className="setup-subtitle">
+              <div id="tour-setup-card" className="glass-panel setup-card" style={{ padding: '32px', background: 'rgba(20, 10, 48, 0.72)', border: '1px solid rgba(168, 85, 247, 0.45)', borderRadius: '16px', boxShadow: '0 8px 32px 0 rgba(13, 7, 43, 0.75)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)' }}>
+                <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '26px', fontWeight: '700', marginBottom: '6px', background: 'linear-gradient(135deg, #a5b4fc 0%, #c084fc 50%, #fda4af 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Cast Your Soul Map</h2>
+                <p className="setup-subtitle" style={{ color: '#9ba8c9', opacity: 0.85, fontSize: '14px', marginBottom: '24px' }}>
                   Enter birth coordinates to calculate Sun, Moon, and Ascendant accurately.
                 </p>
 
-                <div className="setup-form" onKeyDown={handleKeyDown}>
-                  <div className="form-group">
-                    <label>First Name / Archetype</label>
+                <div className="setup-form" onKeyDown={handleKeyDown} style={{ display: 'flex', flexDirection: 'column', gap: '18px', textAlign: 'left' }}>
+                  <div className="form-group" style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                    <label style={{ color: '#9ba8c9', fontSize: '12px', fontWeight: '500', textTransform: 'uppercase', letterSpacing: '0.5px' }}>First Name / Archetype</label>
                     <input
                       type="text"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       placeholder="Enter name"
+                      style={{ color: '#ffffff', background: 'rgba(8, 4, 18, 0.8)', border: '1px solid rgba(168, 85, 247, 0.45)', padding: '12px 16px', borderRadius: '8px', fontSize: '15px', outline: 'none', width: '100%' }}
                       required
                     />
                   </div>
 
-                  <div className="form-group">
-                    <label>Date of Birth</label>
+                  <div className="form-group" style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                    <label style={{ color: '#9ba8c9', fontSize: '12px', fontWeight: '500', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Date of Birth</label>
                     <input
                       type="date"
                       value={birthDate}
                       onChange={(e) => setBirthDate(e.target.value)}
+                      style={{ color: '#ffffff', background: 'rgba(8, 4, 18, 0.8)', border: '1px solid rgba(168, 85, 247, 0.45)', padding: '12px 16px', borderRadius: '8px', fontSize: '15px', outline: 'none', width: '100%' }}
                       required
                     />
                   </div>
 
                   {/* Custom AM/PM Time Selector */}
-                  <div className="form-group">
-                    <label>Birth Time</label>
-                    <div className="custom-time-picker">
-                      <select value={birthHour} onChange={(e) => setBirthHour(e.target.value)}>
+                  <div className="form-group" style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                    <label style={{ color: '#9ba8c9', fontSize: '12px', fontWeight: '500', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Birth Time</label>
+                    <div className="custom-time-picker" style={{ display: 'flex', gap: '8px' }}>
+                      <select value={birthHour} onChange={(e) => setBirthHour(e.target.value)} style={{ color: '#ffffff', background: 'rgba(8, 4, 18, 0.8)', border: '1px solid rgba(168, 85, 247, 0.45)', padding: '12px 16px', borderRadius: '8px', fontSize: '14px', flex: 1, outline: 'none' }}>
                         {Array.from({ length: 12 }, (_, i) => i + 1).map(h => (
                           <option key={h} value={h.toString().padStart(2, '0')}>{h.toString().padStart(2, '0')} Hr</option>
                         ))}
                       </select>
-                      <select value={birthMinute} onChange={(e) => setBirthMinute(e.target.value)}>
+                      <select value={birthMinute} onChange={(e) => setBirthMinute(e.target.value)} style={{ color: '#ffffff', background: 'rgba(8, 4, 18, 0.8)', border: '1px solid rgba(168, 85, 247, 0.45)', padding: '12px 16px', borderRadius: '8px', fontSize: '14px', flex: 1, outline: 'none' }}>
                         {Array.from({ length: 12 }, (_, i) => i * 5).map(m => (
                           <option key={m} value={m.toString().padStart(2, '0')}>{m.toString().padStart(2, '0')} Min</option>
                         ))}
                       </select>
-                      <select value={birthPeriod} onChange={(e) => setBirthPeriod(e.target.value)}>
+                      <select value={birthPeriod} onChange={(e) => setBirthPeriod(e.target.value)} style={{ color: '#ffffff', background: 'rgba(8, 4, 18, 0.8)', border: '1px solid rgba(168, 85, 247, 0.45)', padding: '12px 16px', borderRadius: '8px', fontSize: '14px', flex: 1, outline: 'none' }}>
                         <option value="AM">AM</option>
                         <option value="PM">PM</option>
                       </select>
@@ -1046,9 +1048,9 @@ export default function App() {
                   </div>
 
                   {/* City Autocomplete Search */}
-                  <div className="form-group">
-                    <label>City of Birth</label>
-                    <div className="autocomplete-container">
+                  <div className="form-group" style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                    <label style={{ color: '#9ba8c9', fontSize: '12px', fontWeight: '500', textTransform: 'uppercase', letterSpacing: '0.5px' }}>City of Birth</label>
+                    <div className="autocomplete-container" style={{ position: 'relative' }}>
                       <div style={{ position: 'relative' }}>
                         <input
                           type="text"
@@ -1060,21 +1062,23 @@ export default function App() {
                           }}
                           onFocus={() => setShowCityDropdown(true)}
                           placeholder="Search birth city..."
+                          style={{ color: '#ffffff', background: 'rgba(8, 4, 18, 0.8)', border: '1px solid rgba(168, 85, 247, 0.45)', padding: '12px 16px', borderRadius: '8px', fontSize: '15px', outline: 'none', width: '100%' }}
                           required
                         />
-                        <Search size={16} style={{ position: 'absolute', right: '16px', top: '14px', color: 'var(--text-muted)' }} />
+                        <Search size={16} style={{ position: 'absolute', right: '16px', top: '14px', color: '#9ba8c9' }} />
                       </div>
 
                       {showCityDropdown && citySearch && filteredCities.length > 0 && (
-                        <div className="autocomplete-list">
+                        <div className="autocomplete-list" style={{ position: 'absolute', top: '100%', left: 0, right: 0, background: '#13082a', border: '1px solid rgba(168, 85, 247, 0.45)', borderRadius: '8px', zIndex: 1000, maxHeight: '200px', overflowY: 'auto', marginTop: '4px', boxShadow: '0 8px 16px rgba(0,0,0,0.5)' }}>
                           {filteredCities.map(city => (
                             <div
                               key={city.id}
                               className="autocomplete-item"
                               onClick={() => handleCitySelect(city)}
+                              style={{ padding: '10px 14px', cursor: 'pointer', borderBottom: '1px solid rgba(255,255,255,0.03)', color: '#ffffff', display: 'flex', justifyContent: 'space-between', fontSize: '13px' }}
                             >
                               <span style={{ fontWeight: '500' }}>{city.name}</span>
-                              <span className="coords">{city.lat}, {city.lon}</span>
+                              <span className="coords" style={{ color: '#9ba8c9', fontSize: '11px' }}>{city.lat}, {city.lon}</span>
                             </div>
                           ))}
                         </div>
@@ -1096,6 +1100,7 @@ export default function App() {
                     className="btn-primary" 
                     onClick={() => handleGenerate()}
                     disabled={!name || !birthDate || !citySearch.trim()}
+                    style={{ color: '#ffffff', background: 'linear-gradient(135deg, var(--color-violet) 0%, var(--color-purple) 100%)', border: 'none', padding: '14px', borderRadius: '8px', fontSize: '15px', fontWeight: '600', cursor: 'pointer', marginTop: '8px', width: '100%', boxShadow: '0 4px 20px rgba(129,140,248,0.2)' }}
                   >
                     Cast Soul Map
                   </button>
@@ -1104,6 +1109,7 @@ export default function App() {
                     type="button" 
                     className="btn-secondary" 
                     onClick={handleAutofill}
+                    style={{ color: '#ffffff', background: 'rgba(255, 255, 255, 0.06)', border: '1px solid rgba(168, 85, 247, 0.4)', padding: '14px', borderRadius: '8px', fontSize: '15px', fontWeight: '600', cursor: 'pointer', width: '100%', transition: 'all 0.2s' }}
                   >
                     Direct Auto-Fill (Arthur)
                   </button>
